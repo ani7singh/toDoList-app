@@ -13,19 +13,37 @@ import { tap, catchError } from 'rxjs/operators';
 
 export class SignupComponent implements OnInit {
 
-  signupData = { 
-     email: '',
-     username: '',
-     password: '',
-     confirmPassword: '' 
-};
+  // :boolean
+  // :string
+  // :any
+  // :Array<any>=[];
+
+  signupData: any = {
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: ''
+  };
   message = '';
 
   // Inject HttpClient into your component
-  constructor(private http: HttpClient, private router: Router) { }//called first time before the ngOnInit()
+  // constructor(private http: HttpClient, private router: Router) { }//called first time before the ngOnInit()
 
-//called after the constructor and called  after the first ngOnChanges() 
+  //called after the constructor and called  after the first ngOnChanges() 
   ngOnInit() {
+    // this.signupData = '';
   }
+  saveUser()
+  {
+    
+  }
+  // signup() {
+  //   this.http.post('/api/signup',this.signupData).subscribe(resp => {
+  //     console.log(resp);
+  //    // this.router.navigate(['login']);
+  //   }, err => {
+  //     this.message = err.error.msg;
+  //   });
+  // }
 
 }
