@@ -33,40 +33,32 @@
               </span>
             </div>
           </div>
-          <div ngModelGroup="passwordGroup" #passwordGroup="ngModelGroup" appConfirmEqualValidator [class.has-error]="passwordGroup.errors?.notEqual && 
-          !confirmPassword.errors?.required">
+          <div ngModelGroup="passwordGroup" #passwordGroup="ngModelGroup"
+          appConfirmEqualValidator [class.has-error]="passwordGroup.errors?.notEqual && !confirmPassword.errors?.required">
+          <!-- [class.has-error]="confirmPassword.touched && confirmPassword.invalid && !confirmPassword.errors?.required"> -->
             <div class="form-group" [class.has-error]="password.invalid && password.touched">
               <label for="password" class="col-md-3 control-label">Password</label>
               <div class="col-md-9">
-                <input type="password" class="form-control" name="password" #password="ngModel" placeholder="Password" [(ngModel)]="signupData.password"
-                  required>
-                <span class="help-block" *ngIf="password.touched && password.errors?.required">
+                <input type="password" parent='true' class="form-control" name="password" #password="ngModel" placeholder="Password" 
+                [(ngModel)]="signupData.password" required>
+                <span class="help-block" *ngIf="password.errors?.required && (password.touched || password.dirty)">
                   Password cannot be empty...
                 </span>
               </div>
             </div>
-
             <div class="form-group" [class.has-error]="confirmPassword.invalid && confirmPassword.touched">
-              <label for="Confirm Password" class="col-md-3 control-label">Confirm Password</label>
+              <label for="confirmPassword" class="col-md-3 control-label">Confirm Password</label>
               <div class="col-md-9">
-                <input type="password" class="form-control" name="confirmPassword" appConfirmEqualValidator="password" #confirmPassword="ngModel"
-                  placeholder="Confirm Password" [(ngModel)]="signupData.confirmPassword" required>
-                <span class="help-block" *ngIf="confirmPassword.touched && confirmPassword.errors?.required">
-                  Confirm Password is required
-                </span>
-                <span class="help-block" *ngIf="confirmPassword.touched &&
-          passwordGroup.errors?.notEqual && !confirmPassword.errors?.required">
-                  Password and Confirm Password does not match
-                </span>
-                <!-- <span class="help-block"
-                  *ngIf="confirmPassword.touched  && passwordGroup.errors?.notEqual && !confirmPassword.errors?.required">
+                <input type="password" class="form-control" name="confirmPassword" #confirmPassword="ngModel"
+                  placeholder="Confirm Password" [(ngModel)]="signupData.confirmPassword" parent='false' required>
+                  <span class="help-block"
+                  *ngIf="confirmPassword.errors?.required && (confirmPassword.dirty || confirmPassword.touched)">
               Confirm Password is required
             </span>
-                <!- custom validator to display the validation error message. -->
-                <!-- <span class="help-block" *ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual &&
-        !confirmPassword.errors?.required">
-                  Password and Confirm Password does not match
-                </span>  -->
+            <span>{{confirmPassword.touched}}{{passwordGroup.errors?.notEqual}}{{passwordGroup.errors?.notEqual}}{{confirmPassword.errors?.required}}</span>
+            <span class="help-block" *ngIf="passwordGroup.errors?.notEqual && !confirmPassword.errors?.required && (confirmPassword.dirty || confirmPassword.touched)">
+              Password and Confirm Password does not match
+            </span>
               </div>
             </div>
           </div>

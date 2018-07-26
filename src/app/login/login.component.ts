@@ -9,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  loginData: any = {
+    email: '',
+    password: ''
+  };
+  message = '';
   
 constructor() { }
 
