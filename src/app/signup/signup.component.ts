@@ -27,23 +27,24 @@ export class SignupComponent implements OnInit {
   message = '';
 
   // Inject HttpClient into your component
-  // constructor(private http: HttpClient, private router: Router) { }//called first time before the ngOnInit()
+  constructor(private http: HttpClient, private router: Router) { }//called first time before the ngOnInit()
 
   //called after the constructor and called  after the first ngOnChanges() 
   ngOnInit() {
     // this.signupData = '';
   }
-  saveUser()
+  /*saveUser()
   {
     
+  }*/
+  signup() {
+    console.log("hello")
+   /* this.http.post('/api/signup',this.signupData).subscribe(resp => {
+      console.log(resp);
+     //this.router.navigate(['login']);
+    }, err => {
+      this.message = err.error.msg;
+    });*/
   }
-  // signup() {
-  //   this.http.post('/api/signup',this.signupData).subscribe(resp => {
-  //     console.log(resp);
-  //    // this.router.navigate(['login']);
-  //   }, err => {
-  //     this.message = err.error.msg;
-  //   });
-  // }
 
 }
