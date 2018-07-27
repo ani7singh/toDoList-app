@@ -24,7 +24,7 @@
           </div>
 
           <div class="form-group" [class.has-error]="username.invalid && username.touched">
-            <label for="firstname" class="col-md-3 control-label">User Name</label>
+            <label for="username" class="col-md-3 control-label">User Name</label>
             <div class="col-md-9">
               <input type="text" class="form-control" name="username" #username="ngModel" placeholder="User Name" [(ngModel)]="signupData.username"
                 required>
